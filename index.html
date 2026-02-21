@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>For You 💖</title>
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      overflow: hidden;
+      font-family: Arial, sans-serif;
+      text-align: center;
+
+      /* Soft romantic gradient like earlier */
+      background: linear-gradient(to bottom, #ffd6e7, #ffeef5);
+
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    h1 {
+      color: #ff4d88;
+      font-size: 30px;
+      animation: fadeIn 2s ease-in-out;
+    }
+
+    .btn {
+      padding: 12px 25px;
+      font-size: 16px;
+      border: none;
+      border-radius: 20px;
+      background-color: #ff80aa;
+      color: white;
+      cursor: pointer;
+      margin: 10px;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      background-color: #ff4d88;
+      transform: scale(1.1);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .heart {
+      position: absolute;
+      color: pink;
+      animation: float 5s linear infinite;
+    }
+
+    @keyframes float {
+      from { transform: translateY(100vh); }
+      to { transform: translateY(-10vh); }
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1>
+    Hey queen… 💖<br><br>
+    I heard you’re feeling a little boring today 🥺<br><br>
+    Just remember…<br>
+    You have a lovely smile and I love it<br>
+    It is my motivation<br>
+    Should your smile ever disappear, the earth would perish in silence,
+    and I would descend into hell, carrying your name in my heart<br> 
+    That's why making you happy is my responsibility 💗
+  </h1>
+
+  <div>
+    <button class="btn" id="playBtn">Click if you need a smile 🎵</button>
+    <button class="btn" id="stopBtn">Stop music ⏹</button>
+  </div>
+
+  <audio id="bgMusic" loop>
+    <source src="./music.mp3" type="audio/mpeg">
+  </audio>
+
+  <script>
+    const playBtn = document.getElementById("playBtn");
+    const stopBtn = document.getElementById("stopBtn");
+    const music = document.getElementById("bgMusic");
+
+    playBtn.addEventListener("click", function () {
+      music.play();
+
+      for (let i = 0; i < 15; i++) {
+        let heart = document.createElement("div");
+        heart.innerHTML = "💖";
+        heart.className = "heart";
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.fontSize = (15 + Math.random() * 30) + "px";
+        heart.style.animationDuration = (3 + Math.random() * 5) + "s";
+        document.body.appendChild(heart);
+      }
+    });
+
+    stopBtn.addEventListener("click", function () {
+      music.pause();
+      music.currentTime = 0;
+    });
+  </script>
+
+</body>
+</html>
